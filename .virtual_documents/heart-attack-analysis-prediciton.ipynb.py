@@ -7,10 +7,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # For modeling
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, confusion_matrix
+from yellowbrick.classifier import ClassificationReport
 
 
 
-
+# load data
 df = pd.read_csv("heart.csv")
 df.head()
 
@@ -107,33 +115,24 @@ plt.title("Atttribute Correlation Heatmap")
 plt.show()
 
 
-# load libraries for model building
-
-
-
-
-
-
-
-
 # split data
-from sklearn.model_selection import train_test_split
+target = df['output']
+features = df.drop('output', axis=1)
+features = features.drop('slp', axis=1)
+
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0)
+
+
+
+# Standardize data
+
+
+# function for training/testing models also generates a report
 
 
 
 
-# Logistic Regression
-
-
-# kNN
-
-
-# Decision Tree
-
-
-# SVC
-
-
+# function for comparing each model with visualizations
 
 
 
