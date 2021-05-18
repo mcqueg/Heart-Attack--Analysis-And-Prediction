@@ -121,7 +121,7 @@ features = df.drop('output', axis=1)
 features = features.drop('slp', axis=1)
 
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=0)
-
+features.head()
 
 
 # Standardize data
